@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GTA Radio">
+<meta name="theme-color" content="#0b0c0f">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-180.png">
+<title>GTA V Radio</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section id="setup" hidden>
+  <h1>GTA V Radio</h1>
+  <div id="setup-steps">
+    <p>This player runs the radio on your phone. It needs the radio file made by GTARadio.exe on your PC (<b>GTARadio-phone.pack</b>).</p>
+    <ol>
+      <li>On your PC, click <b>Make iPhone copy</b> in the radio page.</li>
+      <li>Get the file onto this iPhone, for example in iCloud Drive or <i>On My iPhone</i> in the Files app.</li>
+      <li>Tap the button below and pick it. It's copied into this app, so you can delete the original afterwards.</li>
+    </ol>
+    <p id="add-home" hidden>Add this page to your Home Screen first (Share, then <b>Add to Home Screen</b>) and open it from there. Safari can clear the storage of pages that aren't on the Home Screen.</p>
+  </div>
+  <label class="big-btn" id="pick-label">Choose GTARadio-phone.pack<input id="pick" type="file" hidden></label>
+  <div id="progress" hidden><div id="bar"></div></div>
+  <p id="setup-msg"></p>
+</section>
+
+<main id="radio" hidden>
+  <div id="wheel" aria-label="Radio stations">
+    <div id="center">
+      <div id="st-name">Radio off</div>
+      <div id="np-title"></div>
+      <div id="np-artist"></div>
+      <div id="np-tag"></div>
+    </div>
+  </div>
+  <div id="stepper">
+    <button id="prev" aria-label="Previous station">◀</button>
+    <button id="power" aria-label="Radio on or off">⏻</button>
+    <button id="next" aria-label="Next station">▶</button>
+  </div>
+  <div id="controls">
+    <label class="toggle"><input id="news" type="checkbox"> News bulletins</label>
+    <button id="replace" class="link">Replace radio file</button>
+  </div>
+</main>
+
+<div id="start" hidden><button id="start-btn">Turn on the radio</button></div>
+<audio id="out" playsinline></audio>
+<script src="opus-decoder.min.js" charset="UTF-8"></script>
+<script src="engine.js"></script>
+<script src="store.js"></script>
+<script src="mixer.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,11 @@
+# Never commit anything extracted from the game.
+GTARadio-data/
+*.pack
+*.pack.part
+*.awc
+*.rpf
+*.wav
+*.mp3
+bin/
+obj/
+pc/CodeWalker.Core/

@@ -1,0 +1,26 @@
+name: Build GTARadio.exe
+on:
+  push:
+    branches: [main]
+    paths: ['pc/**', '.github/workflows/build-pc.yml']
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Get CodeWalker.Core (MIT) at the tested commit
+        shell: bash
+        run: |
+          git clone https://github.com/dexyfex/CodeWalker.git cw
+          git -C cw checkout 485d56b
+          cp -r cw/CodeWalker.Core pc/CodeWalker.Core
+      - name: Publish
+        run: dotnet publish pc/GTARadio/GTARadio.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -o out
+      - uses: actions/upload-artifact@v4
+        with:
+          name: GTARadio
+          path: out/GTARadio.exe

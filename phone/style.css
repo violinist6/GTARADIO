@@ -1,0 +1,35 @@
+:root {
+  --bg: #0b0c0f; --panel: #15171c; --text: #f2f2f2; --muted: #9aa0aa; --accent: #f0b429; --ring: rgba(255,255,255,0.08);
+}
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+html, body { margin: 0; min-height: 100%; background: radial-gradient(ellipse at center, #1b1e25 0%, var(--bg) 70%) fixed, var(--bg); color: var(--text); font-family: -apple-system, "Segoe UI", system-ui, sans-serif; }
+body { padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom); }
+[hidden] { display: none !important; }
+main { min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px; padding: 12px 0; }
+#wheel { position: relative; width: min(100%, 78vh, 640px); width: min(100%, 78dvh, 640px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(0,0,0,0.55) 0 33%, rgba(0,0,0,0.35) 34% 100%); box-shadow: inset 0 0 0 1px var(--ring); user-select: none; -webkit-user-select: none; }
+.station { position: absolute; width: var(--btn, 10%); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; border: 2px solid transparent; background: var(--panel); color: var(--text); display: flex; align-items: center; justify-content: center; text-align: center; font-weight: 800; line-height: 1; padding: 2px; cursor: pointer; transition: transform .15s, border-color .15s, box-shadow .15s; overflow: hidden; font-family: inherit; }
+.station span { display: block; max-width: 100%; }
+.station.on { border-color: var(--accent); box-shadow: 0 0 18px rgba(240,180,41,.5); transform: translate(-50%, -50%) scale(1.15); z-index: 1; }
+.station.off-btn { background: #2a2d34; }
+#center { position: absolute; inset: 20%; border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4px; overflow: hidden; }
+#st-name { font-size: clamp(14px, 4.5vw, 22px); font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: .03em; }
+#np-title { margin-top: 8px; font-size: clamp(13px, 3.8vw, 17px); font-weight: 600; }
+#np-artist { margin-top: 2px; font-size: clamp(12px, 3.4vw, 14px); color: var(--muted); }
+#np-tag { margin-top: 8px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--bg); background: var(--accent); border-radius: 4px; padding: 2px 6px; visibility: hidden; }
+#np-tag.show { visibility: visible; }
+#stepper { display: flex; gap: 18px; }
+#stepper button { width: 56px; height: 56px; border-radius: 50%; border: 1px solid var(--ring); background: var(--panel); color: var(--text); font-size: 20px; cursor: pointer; }
+#controls { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; align-items: center; color: var(--muted); font-size: 14px; }
+#controls label { display: flex; align-items: center; gap: 8px; }
+.link { background: none; border: 0; color: var(--muted); text-decoration: underline; font: inherit; cursor: pointer; }
+#setup { max-width: 520px; margin: 0 auto; padding: 32px 0; line-height: 1.5; }
+#setup h1 { color: var(--accent); text-transform: uppercase; letter-spacing: .04em; font-size: 24px; }
+#setup ol { padding-left: 20px; }
+#add-home { background: var(--panel); border-radius: 10px; padding: 10px 12px; }
+.big-btn { display: block; text-align: center; font-size: 17px; font-weight: 700; padding: 14px 20px; border-radius: 999px; background: var(--accent); color: #111; cursor: pointer; margin: 20px 0 12px; }
+.big-btn.busy { opacity: .5; pointer-events: none; }
+#progress { height: 8px; border-radius: 4px; background: var(--panel); overflow: hidden; }
+#bar { height: 100%; width: 0; background: var(--accent); }
+#setup-msg { color: var(--muted); min-height: 1.5em; }
+#start { position: fixed; inset: 0; background: rgba(0,0,0,.75); display: flex; align-items: center; justify-content: center; }
+#start-btn { font: inherit; font-size: 18px; font-weight: 700; padding: 14px 28px; border-radius: 999px; border: 0; background: var(--accent); color: #111; cursor: pointer; }
